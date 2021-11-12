@@ -5,7 +5,7 @@
   left: 3%;
   float: left;
   margin-left: 5%;
-  height: 350px;
+  height: 360px;
 }
 
 :host ::ng-deep .mat-form-field-label{
@@ -113,7 +113,7 @@
 .loadTaskButton{
   position: relative;
   left: 16%;
-  top: 58px;
+  top: 68px;
   width: 66%;
 }
 .enterTaskButton{

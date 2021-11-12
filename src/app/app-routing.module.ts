@@ -6,6 +6,7 @@ import {SolveTaskComponent} from "./solve-task/solve-task.component";
 
 const routes: Routes = [
   {path:'home' , component: HomepageComponent},
+  {path:'' , component: HomepageComponent},
   {path:'add' , component: AddTaskComponent},
   {path:'solveTask' , component: SolveTaskComponent},
 ];

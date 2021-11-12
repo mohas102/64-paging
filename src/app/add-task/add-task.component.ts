@@ -40,7 +40,7 @@ export class AddTaskComponent implements OnInit {
     if (this.adresse.hasError('required')) {
       return 'You must enter a value';
     }
-    return this.adresse.hasError('pattern') ? 'non-hexadecimal number found in your Entry' : '';
+    return this.adresse.hasError('pattern') ? 'Non-hexadecimal number found in your Entry' : '';
   }
 
   /**

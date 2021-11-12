@@ -1,0 +1,129 @@
+.demo-card{
+  width: 360px;
+  position: relative;
+  top: 35%;
+  left: 3%;
+  float: left;
+  margin-left: 5%;
+  height: 350px;
+}
+
+:host ::ng-deep .mat-form-field-label{
+  margin-top: -1px;
+}
+
+:host ::ng-deep .mat-form-field-prefix{
+  position: initial;
+}
+
+.pullActionUp{
+  position: relative;
+  bottom: -30px;
+}
+.timer-drop-down{
+  position: relative;
+  left: 39%;
+  top: 6%;
+  float: left;
+  height: 0%;
+}
+
+.im1{
+  position: relative;
+  left: 79px;
+  top: 3px;
+
+  bottom: 15px;
+  width: 50%;
+  border-radius: 30px;
+  object-fit: cover;
+  border: 2px solid #8325BE;
+}
+
+.im2{
+  position: relative;
+  left: 69px;
+  top: 3px;
+
+  bottom: 15px;
+  width: 33%;
+  border-radius: 30px;
+  object-fit: cover;
+  border: 2px solid #8325BE;
+}
+
+.title{
+  position: relative;
+  left: 110px;
+  bottom: 10px;
+}
+
+.title1{
+  position: relative;
+  left: 55px;
+  top: 34px;
+  margin-bottom: 36px;
+}
+
+.titleLoad{
+  position: relative;
+  left: 100px;
+  top: 25px;
+  margin-bottom: 18px;
+}
+
+.card1Form{
+  position: relative;
+  left: 50px;
+  top: 15px;
+}
+
+.image-64-Bit{
+  width: 10%;
+  position: absolute;
+  left: 78px;
+  top: 83px;
+}
+
+.image-e-learning{
+  width: 13%;
+  position: absolute;
+  left:1158px;
+  top: 60px;
+}
+
+:host ::ng-deep  .mat-form-field-flex{
+  height: 50px;
+}
+
+.createTaskButton{
+  width: 150px;
+  position: relative;
+  left: 24px;
+  bottom: 13px;
+}
+
+.generateTaskButton{
+  width: 150px;
+  position: relative;
+  left: 10px;
+  bottom: 13px;
+}
+
+.loadTaskButton{
+  position: relative;
+  left: 16%;
+  top: 58px;
+  width: 66%;
+}
+.enterTaskButton{
+  position: relative;
+  left: 16%;
+  top: 18px;
+  width: 66%;
+}
+
+.textInLoadTask{
+  position: relative;
+  top: 30px;
+}

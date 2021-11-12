@@ -1,0 +1,225 @@
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+  font-size: 20px;
+  background-color: blanchedalmond;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+  font-family: math, serif;
+}
+
+.mat-header-cell{
+  font-size: 20px;
+}
+
+
+.mat-column-demo-value {
+  width: 32px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.card-position{
+  position: fixed;
+  margin-left: 71.8%;
+  margin-top: 4%;
+  margin-right: 30px;
+  z-index: 1;
+}
+
+.practice-mode{
+  position: absolute;
+  margin: 25% 70%;
+  width: 27%;
+  z-index: 1;
+}
+.practice-mode .mat-card{
+  height: 570px;
+}
+
+.positionAbsoulut{
+  position: absolute;
+}
+
+.table2-stack{
+  position: relative;
+  top: -234px;
+  left: 291px
+}
+
+.table3-stack{
+  position: relative;
+  top: -467px;
+  left: 303px
+}
+
+.table4-stack{
+  position: relative;
+  top: -698px;
+  left: 315px
+}
+
+.height-400px{
+  height: 400px;
+}
+
+.text-above-table{
+  display: inline-block;
+  position: relative;
+  top: 10px;
+  left :200px
+}
+
+.position-width-table {
+  width: 250px;
+  position: relative;
+  left: 200px;
+  top: 0px;
+}
+
+.position-trueAndFalse-icons{
+  position: relative;
+  bottom: -6px;
+  left: 39px;
+}
+.green-color{
+  color: #0FDB46;
+}
+
+.red-color{
+  color: red;
+}
+
+.base-timer {
+  position: fixed;
+  height: 0px;
+  width: 130px;
+  left: 722px;
+  top: 73px;
+}
+
+.base-timer__label {
+  position: absolute;
+
+  /* Size should match the parent container */
+  width: 300px;
+  height: 300px;
+
+  /* Keep the label aligned to the top */
+  top: 0;
+
+  /* Create a flexible box that centers content vertically and horizontally */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Sort of an arbitrary number; adjust to your liking */
+  font-size: 48px;
+}
+
+
+/* Removes SVG styling that would hide the time label */
+.base-timer__circle {
+  fill: none;
+  stroke: none;
+}
+.base-timer__path-remaining {
+  color: #0FDB46;
+  /* Just as thick as the original ring */
+  stroke-width: 7px;
+  stroke-dasharray: 280 283;
+
+  /* Rounds the line endings to create a seamless circle */
+  stroke-linecap: round;
+
+  /* Makes sure the animation starts at the top of the circle */
+  transform: rotate(90deg);
+  transform-origin: center;
+
+  /* One second aligns with the speed of the countdown timer */
+  transition: 1s linear all;
+
+  /* Allows the ring to change color when the color value updates */
+  stroke: currentColor;
+}
+
+.base-timer__svg {
+  /* Flips the svg and makes the animation to move left-to-right */
+  transform: scaleX(-1);
+}
+/* The SVG path that displays the timer's progress */
+.base-timer__path-elapsed {
+  stroke-width: 7px;
+  stroke: grey;
+}
+
+.timer-lable{
+  position: relative;
+  left: 31px;
+  font-size: 29px;
+  bottom: 88px;
+}
+
+.Help-in{
+  position: relative;
+  bottom: 13px;
+  left: 5px;
+  font-size:17px
+}
+
+.derRichtigeIndex_button3{
+  position: absolute;
+  left: 18px;
+  top: 511px;
+}
+.derRichtigeIndex_button2{
+  position: absolute;
+  left: 18px;
+  top: 911px;
+}
+.derRichtigeIndex_button1{
+  position: absolute;
+  left: 18px;
+  top: 1311px;
+}
+.getTheAnswer_button{
+  position: absolute;
+  left: 18px;
+  top: 1361px;
+  background-color: limegreen;
+}
+
+.redCard{
+  border: 10px solid red;
+}
+.greenCard{
+  border: 10px solid green;
+}
+
+.table-title{
+  position: relative;
+  top: 10px;
+  left: 20px;
+  float: left;
+  color: #8325BE;
+  text-decoration:underline;
+}
+
+.greenIndex{
+  -webkit-text-fill-color: green;
+}
+.redIndex{
+  -webkit-text-fill-color: red;
+}
+
+.answer{
+  position:relative;
+  top: 8px;
+}

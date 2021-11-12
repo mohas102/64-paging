@@ -1,0 +1,371 @@
+<div *ngIf="data">
+  <div class="base-timer" *ngIf="timerDisplay">
+    <svg class="base-timer__svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <g class="base-timer__circle">
+        <circle class="base-timer__path-elapsed" cx="50" cy="50" r="45" />
+        <path
+          id="base-timer-path-remaining"
+          stroke-dasharray="283"
+          class="base-timer__path-remaining " [ngStyle]="{'stroke-dasharray':timerObject.value}"
+          d="
+          M 50, 50
+          m -45, 0
+          a 45,45 0 1,0 90,0
+          a 45,45 0 1,0 -90,0
+        "
+        ></path>
+      </g>
+    </svg>
+    <span class="timer-lable"
+          matTooltip="As an option, Check Index Button will be activated after the timer has expired"
+          matTooltipPosition="below">
+    <span class="Help-in">Help in</span>
+    0{{timerObject.displayTime.min}}:<span *ngIf="timerObject.displayTime.sec < 10">0</span>{{timerObject.displayTime.sec}}
+
+  </span>
+  </div>
+
+  <div class="practice-mode" *ngIf="uebungsM">
+    <mat-stepper orientation="vertical">
+      <mat-step>
+        <ng-template matStepLabel>Convert the hex adress to 64-bit</ng-template>
+        <ng-template matStepContent>
+          <p><strong>0x{{data.address | uppercase}}</strong></p>
+          <span class="material-icons" style="margin-left: 60px">south</span>
+          <br>
+          <br>
+          <span> {{getBinary(data.address).slice(0, 32)}}</span>
+          <span> {{getBinary(data.address).slice(32, 65)}}</span>
+          <br>
+          <br>
+          <button mat-button matStepperNext>Next</button>
+        </ng-template>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>The address separated by character ‘|’ into the four parts.</ng-template>
+        <ng-template matStepContent>
+        <span
+          style="color: #0FDB46">{{adreesAufteilungInBinary.level4}}
+          <span style="color: black"> | </span></span>
+          <span
+            style="color: cornflowerblue">{{adreesAufteilungInBinary.level3}}<span
+            style="color: black"> | </span></span>
+          <span style="color: red">{{adreesAufteilungInBinary.level2}}<span
+            style="color: black"> | </span></span>
+          <br>
+          <span style="color: rebeccapurple">{{adreesAufteilungInBinary.level1}}<span
+            style="color: black"> | </span></span>
+          <span style="color: yellowgreen">{{adreesAufteilungInBinary.offset}}</span>
+          <br>
+          <br>
+          <mat-list>
+            <mat-list-item>
+             <span>Offset: <span style="color: yellowgreen">{{adreesAufteilungInBinary.offset}} <span
+               style="color:black"> -></span> 0x{{data.indexes.offset | uppercase}} </span> </span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <span>Index in PML4: <span
+                  style="color: #0FDB46">{{adreesAufteilungInBinary.level4}}
+                  <span style="color:black"> -></span> 0x{{data.indexes.level4 | uppercase}}</span> </span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>
+            <span>Index in PDPT: <span
+              style="color: cornflowerblue">{{adreesAufteilungInBinary.level3}}<span
+              style="color:black"> -></span> 0x{{data.indexes.level3 | uppercase}}</span> </span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+            <span>Index in PDT: <span
+              style="color: red">{{adreesAufteilungInBinary.level2}} <span
+              style="color:black"> -></span> 0x{{data.indexes.level2 | uppercase}}</span> </span>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+
+            <mat-list-item>
+            <span>Index in PT: <span
+              style="color: rebeccapurple">{{adreesAufteilungInBinary.level1}} <span
+              style="color:black"> -></span> 0x{{data.indexes.level1 | uppercase}}</span> </span>
+            </mat-list-item>
+          </mat-list>
+
+          <button mat-button matStepperPrevious>Back</button>
+        </ng-template>
+      </mat-step>
+
+    </mat-stepper>
+
+  </div>
+
+  <div class="card-position" [ngClass]=" {'positionAbsoulut':uebungsM }">
+    <mat-card class="mat-elevation-z10" [ngClass]="{
+  'redCard':answer1===false,
+  'greenCard':answer1===true
+  }">
+      <mat-card-header>
+        <mat-card-title>
+          Virt. add: 0x{{data.address | uppercase}}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content *ngIf="data">
+        <div>
+          <span *ngIf="data.PML4 && data.PML4.selectedEntry">
+             PML4: Index <strong style="color: #8325BE">0x{{data.PML4.selectedEntry.index | uppercase}}</strong> Frame <strong style="color: #8325BE">0x{{data.PML4.selectedEntry.value | uppercase}}</strong>
+          </span>
+        </div>
+        <div>
+        <span *ngIf="data.PDPT && data.PDPT.selectedEntry">
+          PDPT: Index <strong style="color: #8325BE">0x{{data.PDPT.selectedEntry.index | uppercase}}</strong> Frame <strong style="color: #8325BE">0x{{data.PDPT.selectedEntry.value | uppercase}}</strong>
+        </span>
+        </div>
+        <div>
+        <span *ngIf="data.PDT && data.PDT.selectedEntry">
+          PDT:  Index <strong style="color: #8325BE">0x{{data.PDT.selectedEntry.index | uppercase}}</strong> Frame <strong style="color: #8325BE">0x{{data.PDT.selectedEntry.value | uppercase}}</strong>
+        </span>
+        </div>
+        <span *ngIf="data.PT && data.PT.selectedEntry">
+          PT: Index <strong style="color: #8325BE">0x{{data.PT.selectedEntry.index | uppercase}}</strong> Frame <strong style="color: #8325BE">0x{{data.PT.selectedEntry.value | uppercase}}</strong>
+           <div class="answer" *ngIf=" data.PT.selectedEntry">
+             <span *ngIf="data">
+            Type your Answer here 0x
+             </span>
+             <input type="text" style="width: 70px" [formControl]="answer">
+           </div>
+         </span>
+
+        <div>
+        <span *ngIf="answer1">
+        the correct physical address is <strong style="color: green">0x{{getAnswer()| uppercase}}</strong>
+      </span>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary"
+                matTooltip="Check if your Entry is correct "
+                matTooltipPosition="below"
+                (click)="checkTheAnswer(answer.value)"
+                [disabled]="answer.invalid"
+        >Check Answer
+        </button>
+        <button mat-flat-button (click)="download()">
+        <span class="material-icons"
+              matTooltip="Download the Task"
+              matTooltipPosition="below">
+          file_download
+        </span>
+        </button>
+        <mat-slide-toggle [checked]="uebungsM"
+                          matTooltip="Get some Help"
+                          matTooltipPosition="below"
+                          [(ngModel)]="uebungsM">Help</mat-slide-toggle>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+
+  <div class="height-400px" *ngIf="data.PML4">
+
+    <h1 class="table-title">Level 4.</h1>
+    <h4 class="text-above-table">The physical address of PML4T <span style="color: #8325BE">(0x{{data.PML4.basicAddress | uppercase}})</span></h4>
+
+    <table mat-table [dataSource]="data.PML4.entries" class="mat-elevation-z8 position-width-table">
+      <ng-container matColumnDef="index">
+        <th mat-header-cell *matHeaderCellDef>Index</th>
+        <td mat-cell *matCellDef="let element">0x{{element.index | uppercase}}</td>
+      </ng-container>
+      <ng-container matColumnDef="value">
+        <th mat-header-cell  *matHeaderCellDef>
+          <span matTooltip="The frame of Page Directory Page Table "
+                matTooltipPosition="after">#PDPT</span></th>
+        <td mat-cell *matCellDef="let element">0x{{element.value | uppercase}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr
+        mat-row
+        (click)="addNewLevel3(row,data.PML4)"
+        [ngClass]="{
+        'demo-row-is-clicked':data.PML4.selectedEntry === row ,
+        'greenIndex':checkedIndex4===true && data.PML4.selectedEntry === row ,
+        'redIndex':checkedIndex4===true && wrongEntryPML4===row
+        }"
+        *matRowDef="let row; columns: displayedColumns;"
+      ></tr>
+<!--      [class.demo-row-is-clicked]="data.PML4.selcted === row "-->
+    </table>
+    <button mat-raised-button
+            color="primary"
+            style="left: 18px; bottom: 242px;"
+            matTooltip="Select the right Index in the table "
+            matTooltipPosition="below"
+            (click)="derRichtigeIndexVonLevel4(data.PML4.correctIndex,data.PML4)"
+            [disabled]="timerObject.timeleft >0">Check Index
+    </button>
+
+  </div>
+
+  <div class="height-400px" *ngIf="data.PDPT">
+
+    <h1 class="table-title" >Level 3.</h1>
+    <h4 class="text-above-table">The physical address of PDPT <span style="color: #8325BE">(0x{{data.PDPT.basicAddress | uppercase}})</span></h4>
+
+    <ng-container *ngFor="let j of [1,2,3,4]">
+      <table style="width: 250px;" mat-table [dataSource]="data.PDPT.entries" class="mat-elevation-z8" [ngClass]=" {'table2-stack':j ===2 ,'table3-stack':j ===3, 'table4-stack':j ===4 ,'position-width-table':j ===1 }">
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef>Index</th>
+          <td mat-cell *matCellDef="let element"> 0x{{element.index | uppercase}}</td>
+        </ng-container>
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef>
+            <span matTooltip="The frame of Page Directory Table "
+                  matTooltipPosition="after">#PD</span>
+          </th>
+          <td mat-cell *matCellDef="let element">0x{{element.value | uppercase}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          (click)="addNewLevel2(row,data.PDPT)"
+          [ngClass]="{
+        'demo-row-is-clicked':data.PDPT.selectedEntry === row ,
+        'greenIndex':checkedIndex3===true && data.PDPT.selectedEntry === row ,
+        'redIndex':checkedIndex3===true && wrongEntryPDPT===row
+        }"
+          *matRowDef="let row; columns: displayedColumns;"
+        ></tr>
+      </table>
+
+    </ng-container>
+    <button mat-raised-button color="primary"
+            class="derRichtigeIndex_button3"
+            matTooltip="Select the right Index in the table "
+            matTooltipPosition="below"
+            (click)="derRichtigeIndexVonLevel3(data.PDPT.correctIndex,data.PDPT)"
+            [disabled]="timerObject.timeleft >0">Check Index
+    </button>
+  </div>
+
+  <div class="height-400px" *ngIf="data.PDT">
+
+    <h1 class="table-title">Level 2.</h1>
+    <h4 class="text-above-table">The physical address of PDT <span style="color: #8325BE">(0x{{data.PDT.basicAddress | uppercase}})</span></h4>
+
+    <ng-container *ngFor="let j of [1,2,3,4]">
+      <table style="width: 250px" mat-table [dataSource]="data.PDT.entries" class="mat-elevation-z8" [ngClass]=" {'table2-stack':j ===2 ,'table3-stack':j ===3, 'table4-stack':j ===4 , 'position-width-table':j ===1 }">
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef>Index</th>
+          <td mat-cell *matCellDef="let element">0x{{element.index | uppercase}}</td>
+        </ng-container>
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef>
+            <span matTooltip="The frame of Page Table "
+                  matTooltipPosition="after">#PT</span>
+          </th>
+          <td mat-cell *matCellDef="let element">0x{{element.value | uppercase}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          (click)="addNewLeve1(row,data.PDT)"
+          [ngClass]="{
+        'demo-row-is-clicked':data.PDT.selectedEntry === row ,
+        'greenIndex':checkedIndex2===true && data.PDT.selectedEntry === row ,
+        'redIndex':checkedIndex2===true && wrongEntryPDT===row
+        }"
+          *matRowDef="let row; columns: displayedColumns;"
+        ></tr>
+      </table>
+
+    </ng-container >
+    <button mat-raised-button color="primary"
+            class="derRichtigeIndex_button2"
+            matTooltip="Select the right Index in the table "
+            matTooltipPosition="below"
+            (click)="derRichtigeIndexVonLevel2(data.PDT.correctIndex,data.PDT)"
+            [disabled]="timerObject.timeleft >0">Check Index
+    </button>
+  </div>
+
+  <div class="height-400px" *ngIf="data.PT">
+
+    <h1 class="table-title">Level 1.</h1>
+    <h4 class="text-above-table">The physical address of PT <span style="color: #8325BE">(0x{{data.PT.basicAddress | uppercase}})</span></h4>
+
+    <ng-container *ngFor="let j of [1,2,3,4]">
+
+
+      <table style="width: 250px;" mat-table [dataSource]="data.PT.entries" class="mat-elevation-z8" [ngClass]=" {'table2-stack':j ===2 ,'table3-stack':j ===3, 'table4-stack':j ===4,'position-width-table':j ===1  }">
+        <ng-container matColumnDef="index">
+          <th mat-header-cell *matHeaderCellDef>Index</th>
+          <td mat-cell *matCellDef="let element">0x{{element.index | uppercase}}</td>
+        </ng-container>
+        <ng-container matColumnDef="value">
+          <th mat-header-cell *matHeaderCellDef>
+            <span matTooltip="The frame of physical address"
+                  matTooltipPosition="after">
+              #Frame
+            </span>
+            </th>
+          <td mat-cell *matCellDef="let element">0x{{element.value | uppercase}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr
+          mat-row
+          (click)="selectedForLevel1(row,data.PT)"
+          [ngClass]="{
+        'demo-row-is-clicked':data.PT.selectedEntry === row ,
+        'greenIndex':checkedIndex1===true && data.PT.selectedEntry === row ,
+        'redIndex':checkedIndex1===true && wrongEntryPT===row
+        }"
+          *matRowDef="let row; columns: displayedColumns;"
+        ></tr>
+      </table>
+
+
+    </ng-container>
+    <button mat-raised-button color="primary"
+            class="derRichtigeIndex_button1"
+            matTooltip="Select the right Index in the table "
+            matTooltipPosition="below"
+            (click)="derRichtigeIndexVonLevel1(data.PT.correctIndex,data.PT)"
+            [disabled]="timerObject.timeleft >0">Check Index
+    </button>
+    <button mat-raised-button color="primary"
+            class="getTheAnswer_button"
+            (click)="getAnswer()"
+            [disabled]="timerObject.timeleft >0">Get Answer
+    </button>
+
+  </div>
+
+  <!--  <div class="col" *ngFor="let j of [data.stufe2,data.stufe3, data.stufe4]">-->
+  <!--    <h3 style="text-decoration: underline;" class="stufe" *ngIf="j === data.stufe2">Level 3.</h3>-->
+  <!--    <h3 style="text-decoration: underline;" class="stufe" *ngIf="j === data.stufe3">Level 2.</h3>-->
+  <!--    <h3 style="text-decoration: underline;" class="stufe" *ngIf="j === data.stufe4">Level 1.</h3>-->
+
+  <!--      <h6 class="IdOfTable">Tha base physical address of the table (0x{{j.id | uppercase}})</h6>-->
+
+  <!--      <table mat-table [dataSource]="j.entries" class="mat-elevation-z8">-->
+  <!--        <ng-container matColumnDef="index">-->
+  <!--          <th mat-header-cell *matHeaderCellDef>index</th>-->
+  <!--          <td mat-cell *matCellDef="let element">0x{{element.index | uppercase}}</td>-->
+  <!--        </ng-container>-->
+  <!--        <ng-container matColumnDef="value">-->
+  <!--          <th mat-header-cell *matHeaderCellDef>value</th>-->
+  <!--          <td mat-cell *matCellDef="let element">0x{{element.value | uppercase}}</td>-->
+  <!--        </ng-container>-->
+  <!--        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+  <!--        <tr-->
+  <!--          mat-row-->
+  <!--          (click)="addNewLevel(row,j)"-->
+  <!--          [class.demo-row-is-clicked]="j?.selcted === row "-->
+  <!--          *matRowDef="let row; columns: displayedColumns;"-->
+  <!--        ></tr>-->
+  <!--      </table>-->
+  <!--    </div>-->
+
+
+</div>

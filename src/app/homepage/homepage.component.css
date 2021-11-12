@@ -1,0 +1,66 @@
+.textPos{
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  color: white;
+}
+
+.textPos2{
+  position: absolute;
+  left: 19px;
+}
+
+.imga{
+  object-fit: fill;
+  width: 100%;
+  height: 92.4%;
+}
+
+.wrapper{
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+a{
+  display: block;
+  width: 200px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 18px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border: 2px solid #333;
+
+  background-color: white;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all .35s;
+}
+
+a span{
+  position: relative;
+  z-index: 2;
+}
+
+a:after{
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: #ff003b;
+  transition: all .35s;
+}
+
+a:hover{
+  color: #fff;
+}
+
+a:hover:after{
+  width: 100%;
+}

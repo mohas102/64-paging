@@ -27,7 +27,7 @@ export class AddTaskComponent implements OnInit {
   time!: string;
   difficulty:string[] =["1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16"];
   selectedDifficulty = this.difficulty[15];
-  generatedRandom!:string;
+  randomAddress!:string;
   adresse = new FormControl('', [Validators.required, Validators.pattern('^[0-9A-Fa-f]+$')]);
 
 
@@ -58,15 +58,15 @@ export class AddTaskComponent implements OnInit {
    * @public
    */
   generateRandomTask() {
-    this.generatedRandom = this.addService.generateRandomAdressWithLength(parseInt(this.selectedDifficulty));
+    this.randomAddress = this.addService.generateRandomAdressWithLength(parseInt(this.selectedDifficulty));
   }
 
   /**
    * generate a task with a random address
    * @public
    */
-  randomaccepted(){
-    this.addService.generateTaskWithUserEntry(this.generatedRandom);
+  generateRandomAddress(){
+    this.addService.generateTaskWithUserEntry(this.randomAddress);
     this.router.navigate(['solveTask']);
     this.timerService.setTime_Limit(this.time);
   }

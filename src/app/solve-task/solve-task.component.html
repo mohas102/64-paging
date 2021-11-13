@@ -170,7 +170,7 @@
   <div class="height-400px" *ngIf="data.PML4">
 
     <h1 class="table-title">Level 4.</h1>
-    <h4 class="text-above-table">The physical address of PML4T <span style="color: #8325BE">(0x{{data.PML4.basicAddress | uppercase}})</span></h4>
+    <h4 class="text-above-table">The physical frame number of PML4T <strong style="color: #8325BE">(0x{{data.PML4.basicAddress | uppercase}})</strong></h4>
 
     <table mat-table [dataSource]="data.PML4.entries" class="mat-elevation-z8 position-width-table">
       <ng-container matColumnDef="index">
@@ -199,7 +199,7 @@
     <button mat-raised-button
             color="primary"
             style="left: 18px; bottom: 242px;"
-            matTooltip="Select the right Index in the table "
+            matTooltip="Select the correct Index in the table "
             matTooltipPosition="below"
             (click)="derRichtigeIndexVonLevel4(data.PML4.correctIndex,data.PML4)"
             [disabled]="timerObject.timeleft >0">Check Index
@@ -210,7 +210,7 @@
   <div class="height-400px" *ngIf="data.PDPT">
 
     <h1 class="table-title" >Level 3.</h1>
-    <h4 class="text-above-table">The physical address of PDPT <span style="color: #8325BE">(0x{{data.PDPT.basicAddress | uppercase}})</span></h4>
+    <h4 class="text-above-table">The physical frame number of PDPT <strong style="color: #8325BE">(0x{{data.PDPT.basicAddress | uppercase}})</strong></h4>
 
     <ng-container *ngFor="let j of [1,2,3,4]">
       <table style="width: 250px;" mat-table [dataSource]="data.PDPT.entries" class="mat-elevation-z8" [ngClass]=" {'table2-stack':j ===2 ,'table3-stack':j ===3, 'table4-stack':j ===4 ,'position-width-table':j ===1 }">
@@ -241,7 +241,7 @@
     </ng-container>
     <button mat-raised-button color="primary"
             class="derRichtigeIndex_button3"
-            matTooltip="Select the right Index in the table "
+            matTooltip="Select the correct Index in the table "
             matTooltipPosition="below"
             (click)="derRichtigeIndexVonLevel3(data.PDPT.correctIndex,data.PDPT)"
             [disabled]="timerObject.timeleft >0">Check Index
@@ -251,7 +251,7 @@
   <div class="height-400px" *ngIf="data.PDT">
 
     <h1 class="table-title">Level 2.</h1>
-    <h4 class="text-above-table">The physical address of PDT <span style="color: #8325BE">(0x{{data.PDT.basicAddress | uppercase}})</span></h4>
+    <h4 class="text-above-table">The physical frame number of PDT <strong style="color: #8325BE">(0x{{data.PDT.basicAddress | uppercase}})</strong></h4>
 
     <ng-container *ngFor="let j of [1,2,3,4]">
       <table style="width: 250px" mat-table [dataSource]="data.PDT.entries" class="mat-elevation-z8" [ngClass]=" {'table2-stack':j ===2 ,'table3-stack':j ===3, 'table4-stack':j ===4 , 'position-width-table':j ===1 }">
@@ -282,7 +282,7 @@
     </ng-container >
     <button mat-raised-button color="primary"
             class="derRichtigeIndex_button2"
-            matTooltip="Select the right Index in the table "
+            matTooltip="Select the correct Index in the table "
             matTooltipPosition="below"
             (click)="derRichtigeIndexVonLevel2(data.PDT.correctIndex,data.PDT)"
             [disabled]="timerObject.timeleft >0">Check Index
@@ -292,7 +292,7 @@
   <div class="height-400px" *ngIf="data.PT">
 
     <h1 class="table-title">Level 1.</h1>
-    <h4 class="text-above-table">The physical address of PT <span style="color: #8325BE">(0x{{data.PT.basicAddress | uppercase}})</span></h4>
+    <h4 class="text-above-table">The physical frame number of PT <strong style="color: #8325BE">(0x{{data.PT.basicAddress | uppercase}})</strong></h4>
 
     <ng-container *ngFor="let j of [1,2,3,4]">
 
@@ -328,7 +328,7 @@
     </ng-container>
     <button mat-raised-button color="primary"
             class="derRichtigeIndex_button1"
-            matTooltip="Select the right Index in the table "
+            matTooltip="Select the correct Index in the table "
             matTooltipPosition="below"
             (click)="derRichtigeIndexVonLevel1(data.PT.correctIndex,data.PT)"
             [disabled]="timerObject.timeleft >0">Check Index
@@ -340,32 +340,5 @@
     </button>
 
   </div>
-
-  <!--  <div class="col" *ngFor="let j of [data.stufe2,data.stufe3, data.stufe4]">-->
-  <!--    <h3 style="text-decoration: underline;" class="stufe" *ngIf="j === data.stufe2">Level 3.</h3>-->
-  <!--    <h3 style="text-decoration: underline;" class="stufe" *ngIf="j === data.stufe3">Level 2.</h3>-->
-  <!--    <h3 style="text-decoration: underline;" class="stufe" *ngIf="j === data.stufe4">Level 1.</h3>-->
-
-  <!--      <h6 class="IdOfTable">Tha base physical address of the table (0x{{j.id | uppercase}})</h6>-->
-
-  <!--      <table mat-table [dataSource]="j.entries" class="mat-elevation-z8">-->
-  <!--        <ng-container matColumnDef="index">-->
-  <!--          <th mat-header-cell *matHeaderCellDef>index</th>-->
-  <!--          <td mat-cell *matCellDef="let element">0x{{element.index | uppercase}}</td>-->
-  <!--        </ng-container>-->
-  <!--        <ng-container matColumnDef="value">-->
-  <!--          <th mat-header-cell *matHeaderCellDef>value</th>-->
-  <!--          <td mat-cell *matCellDef="let element">0x{{element.value | uppercase}}</td>-->
-  <!--        </ng-container>-->
-  <!--        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
-  <!--        <tr-->
-  <!--          mat-row-->
-  <!--          (click)="addNewLevel(row,j)"-->
-  <!--          [class.demo-row-is-clicked]="j?.selcted === row "-->
-  <!--          *matRowDef="let row; columns: displayedColumns;"-->
-  <!--        ></tr>-->
-  <!--      </table>-->
-  <!--    </div>-->
-
 
 </div>

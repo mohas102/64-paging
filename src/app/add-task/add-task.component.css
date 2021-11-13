@@ -21,18 +21,16 @@
   bottom: -30px;
 }
 .timer-drop-down{
+  width: 500px;
   position: relative;
-  left: 39%;
-  top: 6%;
-  float: left;
-  height: 0%;
+  left: 500px;
+  top: 60px;
 }
 
 .im1{
   position: relative;
   left: 79px;
   top: 3px;
-
   bottom: 15px;
   width: 50%;
   border-radius: 30px;
@@ -44,9 +42,8 @@
   position: relative;
   left: 69px;
   top: 3px;
-
   bottom: 15px;
-  width: 33%;
+  width: 100px;
   border-radius: 30px;
   object-fit: cover;
   border: 2px solid #8325BE;
@@ -79,17 +76,17 @@
 }
 
 .image-64-Bit{
-  width: 10%;
+  width: 120px;
   position: absolute;
   left: 78px;
-  top: 83px;
+  top: 122px;
 }
 
 .image-e-learning{
-  width: 13%;
+  width: 170px;
   position: absolute;
-  left:1158px;
-  top: 60px;
+  left:1000px;
+  top: 90px;
 }
 
 :host ::ng-deep  .mat-form-field-flex{
@@ -126,4 +123,45 @@
 .textInLoadTask{
   position: relative;
   top: 30px;
+}
+
+.demo-card1{
+  width: 340px;
+  position: relative;
+  top: 180px;
+  left: 50px;
+  height: 360px;
+
+}
+
+.demo-card2{
+  width: 366px;
+  position: relative;
+  bottom: 180px;
+  left: 445px;
+  height: 360px;
+
+}
+
+.demo-card3{
+  width: 340px;
+  position: relative;
+  bottom: 539px;
+  left: 868px;
+  height: 360px;
+
+}
+
+.content-card-random{
+  position: relative;
+  top: 50px;
+}
+
+.text-under-timer{
+  position: relative;
+  right: 100px;
+}
+
+.container1{
+  width: 70%;
 }

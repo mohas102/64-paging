@@ -163,5 +163,6 @@
 }
 
 .container1{
-  width: 70%;
+  margin-left: 10%;
+  position: relative;
 }

@@ -31,7 +31,7 @@ export class AddTask {
    * @return {string}: an Address
    * @public
    */
-  generateRandomAdressWithLength(length: number):string {
+  generateRandomAdress(length: number):string {
     let result:string='';
     for(var _i = 0; _i < length ; _i++){
       result += Math.floor(Math.random() * 16).toString(16);

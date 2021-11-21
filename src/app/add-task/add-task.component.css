@@ -17,8 +17,10 @@
 }
 
 .pullActionUp{
-  position: relative;
-  bottom: -30px;
+  /*position: relative;*/
+  /*bottom: -30px;*/
+  margin-left: 4%;
+  margin-top: 13%;
 }
 .timer-drop-down{
   width: 500px;
@@ -44,14 +46,11 @@
   top: 3px;
   bottom: 15px;
   width: 100px;
-  border-radius: 30px;
-  object-fit: cover;
-  border: 2px solid #8325BE;
 }
 
 .title{
   position: relative;
-  left: 110px;
+  left: 120px;
   bottom: 10px;
 }
 
@@ -79,11 +78,11 @@
   width: 120px;
   position: absolute;
   left: 78px;
-  top: 122px;
+  top: 83px;
 }
 
 .image-e-learning{
-  width: 170px;
+  width: 120px;
   position: absolute;
   left:1000px;
   top: 90px;
@@ -95,16 +94,16 @@
 
 .createTaskButton{
   width: 150px;
-  position: relative;
-  left: 24px;
-  bottom: 13px;
+  /*position: relative;*/
+  /*left: 24px;*/
+  /*bottom: 13px;*/
 }
 
 .generateTaskButton{
   width: 150px;
-  position: relative;
-  left: 10px;
-  bottom: 13px;
+  /*position: relative;*/
+  /*left: 10px;*/
+  /*bottom: 13px;*/
 }
 
 .loadTaskButton{
@@ -131,16 +130,14 @@
   top: 180px;
   left: 50px;
   height: 360px;
-
 }
 
 .demo-card2{
-  width: 366px;
+  width: 382px;
   position: relative;
   bottom: 180px;
   left: 445px;
   height: 360px;
-
 }
 
 .demo-card3{
@@ -149,7 +146,6 @@
   bottom: 539px;
   left: 868px;
   height: 360px;
-
 }
 
 .content-card-random{
@@ -159,6 +155,7 @@
 
 .text-under-timer{
   position: relative;
+  color: #000066;
   right: 100px;
 }
 

@@ -30,11 +30,11 @@ export class CreateTable {
     }
     let entries = [
       {index: correctIndex, value: r},
-      {index: this.getRandomInt(4095,randomGenerator), value: this.getRandomInt(4095,randomGenerator)},
+      {index: this.getRandomInt(511,randomGenerator), value: this.getRandomInt(4095,randomGenerator)},
       {index: indexFromAnotherLevel, value: this.getRandomInt(4095,randomGenerator)},
-      {index: this.getRandomInt(4095,randomGenerator), value: this.getRandomInt(4095,randomGenerator)}
+      {index: this.getRandomInt(511,randomGenerator), value: this.getRandomInt(4095,randomGenerator)}
     ]
-    let schuffeldEntries = this.schuffle(entries);
+    let schuffeldEntries = this.shuffle(entries);
     return {correctIndex: r, basicAddress: basicAddress, entries: schuffeldEntries,correctEntry:{index:correctIndex,value:r}};
   }
 
@@ -60,7 +60,7 @@ export class CreateTable {
    * @return {any}: the shuffled array
    * @public
    */
-  schuffle(toBeShuffled: Array<any>): any {
+  shuffle(toBeShuffled: Array<any>): any {
     return toBeShuffled.map((value) => ({value, sort: Math.random()}))
       .sort((a, b) => a.sort - b.sort)
       .map(({value}) => value);

@@ -70,33 +70,33 @@ describe('createTable', () => {
 
   });
 
-  it('test methode getAdressAsAufgeteilt',()=>{
-    let adressAsAufgeteilt = gTask.getAdressAsAufgeteilt('4BA0D41B3');
+  it('test methode getIndexesOfAddress',()=>{
+    let indexesOfAddress = gTask.getIndexesOfAddress('4BA0D41B3');
 
     // offset:'1B3',level1:'D4',level2:'1D0',level3:'12',level4:'0'
 
-    expect(adressAsAufgeteilt.offset).toEqual('1b3');
-    expect(adressAsAufgeteilt.level1).toEqual('d4');
-    expect(adressAsAufgeteilt.level2).toEqual('1d0');
-    expect(adressAsAufgeteilt.level3).toEqual('12');
-    expect(adressAsAufgeteilt.level4).toEqual('0');
+    expect(indexesOfAddress.offset).toEqual('1b3');
+    expect(indexesOfAddress.level1).toEqual('d4');
+    expect(indexesOfAddress.level2).toEqual('1d0');
+    expect(indexesOfAddress.level3).toEqual('12');
+    expect(indexesOfAddress.level4).toEqual('0');
 
   })
 
-  it('test methode getAdressAsAufgeteilt with larg number',()=>{
-    let adressAsAufgeteilt = gTask.getAdressAsAufgeteilt('FEDCBA9876543210');
+  it('test methode getIndexesOfAddress with larg number',()=>{
+    let indexesOfAddress = gTask.getIndexesOfAddress('FEDCBA9876543210');
 
-    expect(adressAsAufgeteilt.offset).toEqual('210');
-    expect(adressAsAufgeteilt.level1).toEqual('143');
-    expect(adressAsAufgeteilt.level2).toEqual('1b2');
-    expect(adressAsAufgeteilt.level3).toEqual('61');
-    expect(adressAsAufgeteilt.level4).toEqual('175');
+    expect(indexesOfAddress.offset).toEqual('210');
+    expect(indexesOfAddress.level1).toEqual('143');
+    expect(indexesOfAddress.level2).toEqual('1b2');
+    expect(indexesOfAddress.level3).toEqual('61');
+    expect(indexesOfAddress.level4).toEqual('175');
 
   })
 
-  it('getAdressAsAufgeteilt have to invoke method fromHexToBinary',()=>{
+  it('getIndexesOfAddress have to invoke method fromHexToBinary',()=>{
     let spy = spyOn(gTask,'fromHexToBinary').and.returnValue('0')
-    gTask.getAdressAsAufgeteilt('FEDCBA9876543210');
+    gTask.getIndexesOfAddress('FEDCBA9876543210');
 
     expect(spy.calls.count()).toBe(1);
   })

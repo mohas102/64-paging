@@ -112,4 +112,30 @@ export class SolveTask {
   getRowByIndex(correctIndex: string, table: Table):{index:string, value:string} {
     return table.entries.filter(x => x.value === correctIndex)[0];
   }
+
+  getHint():string {
+
+    if(this.generateTask.task.PML4?.selectedEntry){
+      if(this.generateTask.task.PML4?.selectedEntry?.value != this.generateTask.task.PML4?.correctEntry.value) {
+        return "Level4";
+      }
+    }
+    if(this.generateTask.task.PDPT?.selectedEntry){
+      if(this.generateTask.task.PDPT?.selectedEntry?.value != this.generateTask.task.PDPT?.correctEntry.value) {
+        return "Level3";
+      }
+    }
+    if(this.generateTask.task.PDT?.selectedEntry){
+      if(this.generateTask.task.PDT?.selectedEntry?.value != this.generateTask.task.PDT?.correctEntry.value) {
+        return "Level2";
+      }
+    }
+    if(this.generateTask.task.PT?.selectedEntry){
+      if(this.generateTask.task.PT?.selectedEntry?.value != this.generateTask.task.PT?.correctEntry.value) {
+        return "Level1";
+      }
+    }
+
+    return "No ERROR :)";
+  }
 }

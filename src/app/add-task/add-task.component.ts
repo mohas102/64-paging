@@ -57,15 +57,15 @@ export class AddTaskComponent implements OnInit {
    * generate a random address that has a certain length
    * @public
    */
-  generateRandomTask() {
-    this.randomAddress = this.addService.generateRandomAdressWithLength(parseInt(this.selectedDifficulty));
+  generateRandomAddress() {
+    this.randomAddress = this.addService.generateRandomAdress(parseInt(this.selectedDifficulty));
   }
 
   /**
    * generate a task with a random address
    * @public
    */
-  generateRandomAddress(){
+  generateRandomTask(){
     this.addService.generateTaskWithUserEntry(this.randomAddress);
     this.router.navigate(['solveTask']);
     this.timerService.setTime_Limit(this.time);
@@ -73,11 +73,11 @@ export class AddTaskComponent implements OnInit {
 
   /**
    * generate a task with a json file from pc
-   * @param {any} event: the json file
+   * @param {any} file: the json file
    * @public
    */
-  onFileSelected(event:any) {
-    this.addService.load(event.target.files[0]);
+  onFileSelected(file:any) {
+    this.addService.load(file.target.files[0]);
     this.timerService.setTime_Limit(this.time);
   }
 

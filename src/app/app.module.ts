@@ -19,7 +19,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatStepperModule} from "@angular/material/stepper";
 import {MatSelectModule} from "@angular/material/select";
 import {MatTooltipModule} from "@angular/material/tooltip";
-
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +45,7 @@ import {MatTooltipModule} from "@angular/material/tooltip";
         MatSelectModule,
         MatTooltipModule
     ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,136 +2,133 @@
 
   <img class="image-64-Bit" src="./assets/img/Lampen3.jpg" alt="r"  />
 
-  <div class="timer-drop-down">
-    <li style="margin-bottom: 9px">Selcet a timer for your Task</li>
-    <mat-form-field
+<div class="timer-drop-down">
+  <li style="margin-bottom: 9px">Select a timer for your task</li>
+  <mat-form-field
 
-            appearance="fill" >
-      <mat-label>Timer</mat-label>
-      <mat-select matTooltip="Set a Timer for the task"
-                  matTooltipPosition="after"
-                  [(value)]="time" style="margin-top: 6px">
-        <mat-option *ngFor="let slot of slots" [value]="slot">
-          {{slot}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    appearance="fill" >
+    <mat-label>Timer</mat-label>
+    <mat-select [(value)]="time" style="margin-top: 6px">
+      <mat-option *ngFor="let slot of slots" [value]="slot">
+        {{slot}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
 
-    <h2 class="text-under-timer">Select one of the three Possibilities to create a task</h2>
-
-  </div>
-
-
-
-  <!--<https://teknolog.org/32-bit-ve-64-bit-arasindaki-farklar/>-->
-
-  <img class="image-e-learning" src="./assets/img/e-learning.jpg" alt="r"  />
-
-  <mat-card class="mat-elevation-z10 demo-card1">
-
-    <mat-card-header>
-
-      <img  style="height: 109px;" class="im2" src="./assets/img/Buch.jpg" alt="r"  />
-
-
-    </mat-card-header>
-    <mat-card-content>
-
-      <mat-card-title class="title1">
-        Enter an Address
-      </mat-card-title>
-      <mat-form-field class="card1Form" hintLabel="Max 16 characters" appearance="outline">
-        <mat-label>Enter virtual address</mat-label>
-        <span matPrefix>0x &nbsp;</span>
-        <input matTooltip="Allow only hex numbers"
-               matTooltipPosition="after"
-               matInput #input maxlength="16"
-               placeholder="Ex. 123"
-               [formControl]="adresse"
-               required>
-        <mat-hint align="end">{{input.value?.length || 0}}/16</mat-hint>
-        <mat-error *ngIf="adresse.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
-    </mat-card-content>
-    <mat-card-actions>
-      <button class="enterTaskButton"
-              mat-raised-button
-              type="submit" color="primary"
-              (click)="enterAnAdress()"
-              [disabled]="adresse.invalid" >Enter
-      </button>
-    </mat-card-actions>
-  </mat-card>
-
-  <mat-card class="mat-elevation-z10 demo-card2">
-    <mat-card-header>
-
-      <img class="im2" src="./assets/img/Lamp.jpg" alt="r"  />
-
-    </mat-card-header>
-    <mat-card-content style="margin-top: 32px">
-
-      <!--    <div class="content-card-random">-->
-      <!--      -->
-      <!--      -->
-      <!--    </div>-->
-      <mat-card-title class="title">
-        Random
-      </mat-card-title>
-
-      <li style="text-align: center; position: relative;left: -12px;">Generate a task with random virtual address</li>
-      <li style="text-align: center">Select the length of the genearted adress
-        <select (change)="selectLengthOfAdress($event)">
-          <option *ngFor="let option of difficulty" [value]="option"
-                  [selected]="selectedDifficulty === option">{{ option }}
-          </option>
-        </select>
-      </li>
-      <li style="text-align: center; margin-top: 7px;">The generated adress is <strong style="color: #8325BE">0x{{randomAddress | uppercase}}</strong>
-      </li>
-
-    </mat-card-content>
-    <mat-card-actions class ="pullActionUp">
-      <button class="generateTaskButton"
-              mat-raised-button color="primary"
-              matTooltip="Generate another Address"
-              matTooltipPosition="below"
-              (click)="generateRandomAddress()">
-        Generate Address
-      </button>
-      <button class="createTaskButton"
-              mat-raised-button color="primary"
-              matTooltip="Create a Task with this Address"
-              matTooltipPosition="below"
-              (click)="generateRandomTask()">
-        Create Task</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <mat-card class="mat-elevation-z10 demo-card3">
-    <mat-card-header>
-
-      <img class="im2" src="./assets/img/Es.jpg" alt="r"  />
-
-    </mat-card-header>
-    <mat-card-content>
-      <mat-card-title class="titleLoad">
-        Load Task
-      </mat-card-title>
-      <div class="textInLoadTask">
-        <li>You can load a saved task from your pc</li>
-        <li>Only json files are allowed</li>
-      </div>
-
-    </mat-card-content>
-    <mat-card-actions>
-      <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelected($event)"
-             accept=".json"/>
-      <button class="loadTaskButton"
-              mat-raised-button color="primary"
-              (click)="csvInput.click()">Load Task</button>
-    </mat-card-actions>
-  </mat-card>
-
+  <h2 class="text-under-timer">Select one of the three possibilities to create a task</h2>
 
 </div>
+
+
+
+<!--<https://teknolog.org/32-bit-ve-64-bit-arasindaki-farklar/>-->
+
+
+
+  <img class="image-e-learning"src="./assets/img/w.png" alt="r"  />
+
+<mat-card class="mat-elevation-z10 demo-card1">
+
+  <mat-card-header>
+
+    <img  style="height: 109px;" class="im2" src="./assets/img/Buch.png" alt="r"  />
+
+
+  </mat-card-header>
+  <mat-card-content>
+
+    <mat-card-title class="title1">
+      Enter an Address
+    </mat-card-title>
+    <mat-form-field class="card1Form" hintLabel="Max 16 characters" appearance="outline">
+      <mat-label>Enter virtual address</mat-label>
+      <span matPrefix>0x &nbsp;</span>
+      <input matTooltip="Only hex numbers are allowed"
+             matTooltipPosition="after"
+             matInput #input maxlength="16"
+             placeholder="Ex. 123"
+             [formControl]="adresse"
+             required>
+      <mat-hint align="end">{{input.value?.length || 0}}/16</mat-hint>
+      <mat-error *ngIf="adresse.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+  </mat-card-content>
+  <mat-card-actions>
+    <button class="enterTaskButton"
+            mat-raised-button
+            type="submit" color="primary"
+            (click)="enterAnAdress()"
+            [disabled]="adresse.invalid" >Enter
+    </button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="mat-elevation-z10 demo-card2">
+  <mat-card-header>
+
+    <img class="im2" style="left: 80px;" src="./assets/img/Lamp.png" alt="r"  />
+
+  </mat-card-header>
+  <mat-card-content style="margin-top: 32px">
+    <mat-card-title class="title">
+      Random
+    </mat-card-title>
+
+    <li style="text-align: center; position: relative;left: -12px;">Generate a task with random virtual address</li>
+    <li style="text-align: center">Select the length of the generated address
+      <select (change)="selectLengthOfAdress($event)">
+        <option *ngFor="let option of difficulty" [value]="option"
+                [selected]="selectedDifficulty === option">{{ option }}
+        </option>
+      </select>
+    </li>
+    <li style="text-align: center; margin-top: 7px;">The generated address is <strong style="color: #8325BE">0x{{randomAddress | uppercase}}</strong>
+    </li>
+
+  </mat-card-content>
+  <mat-card-actions class ="pullActionUp">
+    <button class="generateTaskButton"
+            mat-raised-button color="primary"
+            matTooltip="Generate another address"
+            matTooltipPosition="below"
+            (click)="generateRandomAddress()">
+      Generate Address
+    </button>
+    <button class="createTaskButton"
+            mat-raised-button color="primary"
+            matTooltip="Create a task with this address"
+            matTooltipPosition="below"
+            (click)="generateRandomTask()">
+      Create Task</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card class="mat-elevation-z10 demo-card3">
+  <mat-card-header>
+
+    <img class="im2" src="./assets/img/a.png" alt="r"  />
+
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-title class="titleLoad">
+      Load Task
+    </mat-card-title>
+    <div class="textInLoadTask">
+      <li>You can load a saved task from your pc</li>
+      <li>Only JSON files are allowed</li>
+    </div>
+
+  </mat-card-content>
+  <mat-card-actions>
+    <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="onFileSelected($event)"
+           accept=".json"/>
+    <button class="loadTaskButton"
+            mat-raised-button color="primary"
+            (click)="csvInput.click()">Load Task</button>
+  </mat-card-actions>
+</mat-card>
+
+  <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+</div>
+
+

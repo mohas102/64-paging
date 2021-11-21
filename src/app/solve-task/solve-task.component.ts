@@ -25,7 +25,8 @@ export class SolveTaskComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.data === undefined){
-      this.router.navigate(['add'])
+      alert('You have to generate a task');
+      this.router.navigate(['/add'])
     }
     this.timerSerive.timer(this.timerObject);
     this.timerDisplay=this.timerSerive.TIME_LIMIT > 0;
@@ -61,7 +62,7 @@ export class SolveTaskComponent implements OnInit {
    * @param {string} value: the input from user
    * @public
    */
-  checkTheAnswer(value:string) {
+  checkAnswer(value:string) {
     this.answer1 = value.toUpperCase() == this.getAnswer().toUpperCase();
   }
 
@@ -86,7 +87,7 @@ export class SolveTaskComponent implements OnInit {
    * @param {Table} table: the table which contains row
    * @public
    */
-  addNewLevel3(row:any, table: Table) {
+  createTableLevel3(row:any, table: Table) {
     if(row.value != this.data.PML4?.correctIndex){
       this.checkedIndex4 = false;
     }
@@ -99,7 +100,7 @@ export class SolveTaskComponent implements OnInit {
    * @param {Table} table: the table which contains row
    * @public
    */
-  addNewLevel2(row:any, table: Table) {
+  createTableLevel2(row:any, table: Table) {
     if(row.value != this.data.PDPT?.correctIndex){
       this.checkedIndex3 = false;
     }
@@ -112,7 +113,7 @@ export class SolveTaskComponent implements OnInit {
    * @param {Table} table: the table which contains row
    * @public
    */
-  addNewLeve1(row:any, table: Table) {
+  createTableLeve1(row:any, table: Table) {
     if(row.value != this.data.PDT?.correctIndex){
       this.checkedIndex2 = false;
     }
@@ -125,7 +126,7 @@ export class SolveTaskComponent implements OnInit {
    * @param {Table} table: the table which contains row
    * @public
    */
-  selectedForLevel1(row:any, table:Table){
+  selecteIndexLevel1(row:any, table:Table){
     if(row.value != this.data.PT?.correctIndex){
       this.checkedIndex1 = false;
     }
@@ -138,7 +139,7 @@ export class SolveTaskComponent implements OnInit {
    * @param {Table} table: PML4 table
    * @public
    */
-  derRichtigeIndexVonLevel4(correctIndex:string, table:Table) {
+  checkIndexLevel4(correctIndex:string, table:Table) {
     // TODO die Methode getRowByIndex brauchst du nicht indem du denrichtigenIndex benutzt
     let rowByIndex = this.solveTask.getRowByIndex(correctIndex,table);
     if(rowByIndex != this.data.PML4?.selectedEntry){
@@ -147,7 +148,7 @@ export class SolveTaskComponent implements OnInit {
       this.wrongEntryPML4 = undefined;
     }
     this.checkedIndex4=true;
-    this.addNewLevel3(rowByIndex,table);
+    this.createTableLevel3(rowByIndex,table);
   }
 
   /**
@@ -156,7 +157,7 @@ export class SolveTaskComponent implements OnInit {
    * @param {Table} table: level 3 table
    * @public
    */
-  derRichtigeIndexVonLevel3(correctIndex:string, table:Table) {
+  checkIndexLevel3(correctIndex:string, table:Table) {
     let rowByIndex = this.solveTask.getRowByIndex(correctIndex,table);
     if(rowByIndex != this.data.PDPT?.selectedEntry){
       this.wrongEntryPDPT=this.data.PDPT?.selectedEntry;
@@ -164,7 +165,7 @@ export class SolveTaskComponent implements OnInit {
       this.wrongEntryPDPT = undefined;
     }
     this.checkedIndex3=true;
-    this.addNewLevel2(rowByIndex,table);
+    this.createTableLevel2(rowByIndex,table);
   }
 
   /**
@@ -173,7 +174,7 @@ export class SolveTaskComponent implements OnInit {
    * @param {Table} table: level 2 table
    * @public
    */
-  derRichtigeIndexVonLevel2(correctIndex:string, table:Table) {
+  checkIndexLevel2(correctIndex:string, table:Table) {
     let rowByIndex = this.solveTask.getRowByIndex(correctIndex,table);
     if(rowByIndex != this.data.PDT?.selectedEntry){
       this.wrongEntryPDT=this.data.PDT?.selectedEntry;
@@ -181,7 +182,7 @@ export class SolveTaskComponent implements OnInit {
       this.wrongEntryPDT = undefined;
     }
     this.checkedIndex2=true;
-    this.addNewLeve1(rowByIndex,table);
+    this.createTableLeve1(rowByIndex,table);
   }
 
   /**
@@ -190,7 +191,7 @@ export class SolveTaskComponent implements OnInit {
    * @param {Table} table: level 1 table
    * @public
    */
-  derRichtigeIndexVonLevel1(correctIndex:string, table:Table) {
+  checkIndexLevel1(correctIndex:string, table:Table) {
     let rowByIndex = this.solveTask.getRowByIndex(correctIndex,table);
     if(rowByIndex != this.data.PT?.selectedEntry){
       this.wrongEntryPT=this.data.PT?.selectedEntry;
@@ -209,5 +210,13 @@ export class SolveTaskComponent implements OnInit {
   getAnswer():string {
     this.answer1=true;
     return this.generatedService.computeResult().toUpperCase();
+  }
+
+  getHint():string {
+    return this.solveTask.getHint();
+  }
+
+  scroll() {
+    window.scroll(0,0);
   }
 }

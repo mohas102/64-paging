@@ -7,7 +7,7 @@ import {CreateTable} from "../CreateTable/CreateTable.service";
   providedIn: 'root'
 })
 /**
- * benötigte Funktionen zum Generieren einer Aufgabe
+ * functions required to generate a task
  */
 export class GenerateTask {
   set adressAufteilungBinary(value: { offset: string; level1: string; level2: string; level3: string; level4: string }) {
@@ -40,10 +40,10 @@ export class GenerateTask {
    * @public
    */
   generateTask(adresse: string, seed:string) {
-    let adressAsAufgeteilt: { "offset": string, "level1": string, "level2": string, "level3": string, "level4": string } = this.getAdressAsAufgeteilt(adresse);
-    let stufe4: Table = this.createTableService.createTable(adressAsAufgeteilt.level4, '0', adressAsAufgeteilt.level3);
+    let indexesOfAddress: { "offset": string, "level1": string, "level2": string, "level3": string, "level4": string } = this.getIndexesOfAddress(adresse);
+    let stufe4: Table = this.createTableService.createTable(indexesOfAddress.level4, '0', indexesOfAddress.level3);
     this._task = {
-      indexes: adressAsAufgeteilt,
+      indexes: indexesOfAddress,
       address: adresse,
       PML4: stufe4,
       seed: seed,
@@ -56,7 +56,7 @@ export class GenerateTask {
    * @return Object: an object with 5 String for each level and offset
    * @public
    */
-  getAdressAsAufgeteilt(adresse: string): { "offset": string, "level1": string, "level2": string, "level3": string, "level4": string } {
+  getIndexesOfAddress(adresse: string): { "offset": string, "level1": string, "level2": string, "level3": string, "level4": string } {
     let adressWith64Bit = this.fromHexToBinary(adresse);
     let offsetAsBinary = adressWith64Bit.slice(64 - 12, 64);
     let level1AsBinary = adressWith64Bit.slice(64 - 12 - 9, 64 - 12);

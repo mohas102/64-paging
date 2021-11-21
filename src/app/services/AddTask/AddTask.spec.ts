@@ -16,7 +16,7 @@ describe('AddTask', () => {
   });
 
   it('the methode generateRandomAdressWithLength should return a string with size 4', () =>{
-    expect(addTask.generateRandomAdressWithLength(4)).toHaveSize(4);
+    expect(addTask.generateRandomAdress(4)).toHaveSize(4);
   });
 
   it('By retrieve the methode generateTaskWithAdressthis, the methode GenerateTask of class GenerateTask should be invoked', () =>{
@@ -44,7 +44,7 @@ describe('AddTask', () => {
 
   it('generateRandomAdressWithLength', () =>{
 
-    let result = addTask.generateRandomAdressWithLength(7);
+    let result = addTask.generateRandomAdress(7);
     expect(result).toHaveSize(7);
 
   });

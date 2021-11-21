@@ -27,10 +27,11 @@
 }
 
 .card-position{
+  width: 392px;
   position: fixed;
-  margin-left: 71.8%;
+  margin-left: 70.8%;
   margin-top: 4%;
-  margin-right: 30px;
+  margin-right: 35px;
   z-index: 1;
 }
 
@@ -140,7 +141,7 @@
   stroke-linecap: round;
 
   /* Makes sure the animation starts at the top of the circle */
-  transform: rotate(90deg);
+
   transform-origin: center;
 
   /* One second aligns with the speed of the countdown timer */
@@ -197,10 +198,10 @@
 }
 
 .redCard{
-  border: 10px solid red;
+  border: 8px solid red;
 }
 .greenCard{
-  border: 10px solid green;
+  border: 8px solid green;
 }
 
 .table-title{
@@ -222,4 +223,20 @@
 .answer{
   position:relative;
   top: 8px;
+}
+.theCorrectAdressDiv{
+  position: relative;
+  top: 14px;
+}
+
+.inputAnswer{
+  width: 70px;
+  border-color: black;
+}
+
+.arrow{
+  position: absolute;
+  width: 200px;
+  left: 75%;
+  top: 1422px;
 }

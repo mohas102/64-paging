@@ -60,7 +60,7 @@ describe('createTable', () => {
   it('schuffle', () => {
     // arrange
     let input =[1,2,3,4,5,6,7,8,9];
-    let output:number[] = createTable.schuffle(input);
+    let output:number[] = createTable.shuffle(input);
     expect(output.filter(i=> input.includes(i))).toHaveSize(9);
   });
 

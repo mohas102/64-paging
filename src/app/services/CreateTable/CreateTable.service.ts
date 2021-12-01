@@ -23,7 +23,7 @@ export class CreateTable {
    */
   createTable(correctIndex: string, basicAddress: string, indexFromAnotherLevel: string): Table {
 
-    const randomGenerator = new Rand(basicAddress);
+    const randomGenerator = new Rand(basicAddress+correctIndex);
     let r: string = this.getRandomInt(4095,randomGenerator);
     if(correctIndex == indexFromAnotherLevel){
       indexFromAnotherLevel=this.getRandomInt(4095,randomGenerator);

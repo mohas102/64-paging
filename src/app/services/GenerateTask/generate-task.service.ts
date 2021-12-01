@@ -40,8 +40,12 @@ export class GenerateTask {
    * @public
    */
   generateTask(adresse: string, seed:string) {
-    let indexesOfAddress: { "offset": string, "level1": string, "level2": string, "level3": string, "level4": string } = this.getIndexesOfAddress(adresse);
-    let stufe4: Table = this.createTableService.createTable(indexesOfAddress.level4, '0', indexesOfAddress.level3);
+
+    let indexesOfAddress: { "offset": string, "level1": string, "level2": string, "level3": string,
+      "level4": string } = this.getIndexesOfAddress(adresse);
+    let stufe4: Table = this.createTableService.createTable(indexesOfAddress.level4,
+        seed, indexesOfAddress.level3);
+    stufe4.basicAddress='0'
     this._task = {
       indexes: indexesOfAddress,
       address: adresse,

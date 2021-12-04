@@ -113,7 +113,7 @@ export class GenerateTask {
    * @public
    */
   computeResult():string {
-    let stufe4: Table = this.createTableService.createTable(this.task.indexes.level4, '0', this.task.indexes.level3);
+    let stufe4: Table = this.createTableService.createTable(this.task.indexes.level4, this.task.seed, this.task.indexes.level3);
     let stufe3 :Table = this.createTableService.createTable(this.task.indexes.level3, stufe4.correctIndex ,this.task.indexes.level2);
     let stufe2 :Table= this.createTableService.createTable(this.task.indexes.level2, stufe3.correctIndex,this.task.indexes.level1);
     let stufe1 :Table = this.createTableService.createTable(this.task.indexes.level1, stufe2.correctIndex,this.task.indexes.level4);

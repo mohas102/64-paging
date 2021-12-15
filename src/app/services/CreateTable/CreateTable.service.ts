@@ -60,9 +60,7 @@ export class CreateTable {
    * @return {any}: the shuffled array
    * @public
    */
-  shuffle(toBeShuffled: Array<any>): any {
-    return toBeShuffled.map((value) => ({value, sort: Math.random()}))
-      .sort((a, b) => a.sort - b.sort)
-      .map(({value}) => value);
+  shuffle(toBeShuffled: Array<{index: string, value: string}>): any {
+    return toBeShuffled.sort((a,b)=>(BigInt("0x"+a.index)< BigInt("0x"+b.index)? -1 : 1));
   }
 }

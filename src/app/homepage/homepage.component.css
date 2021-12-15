@@ -80,3 +80,11 @@ a:hover:after{
   margin-top: 180px;
   left: 4%;
 }
+
+.text4POS{
+  position: absolute;
+  color: white;
+  top: 55%;
+  margin-top: 180px;
+  left: 4%;
+}

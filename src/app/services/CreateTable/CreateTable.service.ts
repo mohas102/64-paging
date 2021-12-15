@@ -61,6 +61,6 @@ export class CreateTable {
    * @public
    */
   shuffle(toBeShuffled: Array<{index: string, value: string}>): any {
-    return toBeShuffled.sort((a,b)=>(BigInt("0x"+a.index)< BigInt("0x"+b.index)? -1 : 1));
+    return toBeShuffled.sort((a,b)=>(BigInt("0x"+a.index)> BigInt("0x"+b.index)? -1 : 1));
   }
 }
